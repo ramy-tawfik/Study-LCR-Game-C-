@@ -10,6 +10,7 @@ game::~game()
 {
 }
 
+
 //function to take the number of the players and there name
 // and add players the players vector
 void game::getPlayerInfo()
