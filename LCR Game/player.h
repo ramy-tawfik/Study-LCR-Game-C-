@@ -10,7 +10,7 @@ class player
 {
 private:
 	string name; // player name
-	int id = rand();// to identify the player case of two player with the same name
+	int id = rand(); // to identify the player case of two player with the same name
 	int chips = 3; // player score
 
 public:

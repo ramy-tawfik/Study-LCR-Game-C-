@@ -1,3 +1,11 @@
+/*
+Ramy Tawfik
+10/15/2018
+Ramy.Tawfik@snhu.edu
+*/
+
+
+
 #include <iostream>
 #include "read_Rulesfile.h"
 #include"game.h"
