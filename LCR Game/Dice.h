@@ -9,5 +9,5 @@ private:
 public:
 	Dice();
 	~Dice();
-	int rollDice();// roll the dice and retern the face value
+	int rollDice();// roll the dice and return the face value
 };

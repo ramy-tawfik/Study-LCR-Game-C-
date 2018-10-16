@@ -21,7 +21,7 @@ int player::getschips() const {
 
 void player::addChip()
 {
-	chips += 1;
+	chips += 1; // add one chip
 }
 
 void player::subChip()
@@ -31,12 +31,13 @@ void player::subChip()
 
 bool player::operator==(player & a)
 {
+	// compare the name, the chips and the id
 	if (this->getname() == a.getname() && this->getschips() == a.getschips() && this->id == a.id)
 	{
-		return true;
+		return true; // same player
 	}
 	else {
-		return false;
+		return false; //not the same player
 	}
 }
 

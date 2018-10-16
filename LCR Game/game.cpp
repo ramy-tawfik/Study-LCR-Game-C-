@@ -14,6 +14,7 @@ game::~game()
 // and add players the players vector
 void game::getPlayerInfo()
 {
+	// check if user entered number less than 3 or enter a charachter
 	while (numplayer < 3 || !cin << numplayer)
 	{
 		cout << "Please enter the number of Players : ";
@@ -47,17 +48,21 @@ void game::play()
 	int dice_face;
 
 	int tempchips;
-	while (!gameover(pv))
+	while (!gameover(pv))// while no winner
 	{
+		//for each player
 		for (int i = 0; i < numplayer; i++) {
 			tempchips = pv[i].getschips();
+			//to make sure player play with 3 dices only
 			if (tempchips > 3)
 			{
 				tempchips = 3;
 			}
+			//for the number of dice = number if chips
 			for (int y = 1; y <= tempchips; y++)
 			{
-				dice_face = dice.rollDice();
+				dice_face = dice.rollDice(); // roll the dice
+				//identify dice face
 				switch (dice_face)
 				{
 				case 1: //left
@@ -78,13 +83,8 @@ void game::play()
 				}
 				printStates();
 			}
-			//cout << "\n" << a.getname() << " " << a.getschips();
 		}
 	}
-
-	/*for (auto a : pv) {
-		cout << "\n" << a.getname() << " " << a.getschips();
-	}*/
 
 	cin.get();
 }
@@ -101,10 +101,10 @@ void game::moveToRight(player & p)
 	{
 		for (int i = 0; i < numplayer; i++)
 		{
-			if (pv[i] == p)
+			if (pv[i] == p) // to identify the player position
 			{
 				pv[i].subChip();
-				pv[i - 1].addChip();
+				pv[i - 1].addChip(); // add chip to the right
 				cout << " 1 chip moved from " << pv[i].getname() << " to " << pv[i - 1].getname() << "\n";
 			}
 		}
@@ -123,6 +123,7 @@ void game::moveToLeft(player & p)
 	{
 		for (int i = 0; i < numplayer; i++)
 		{
+			// to identify the player position
 			if (pv[i] == p)
 			{
 				pv[i + 1].addChip();
@@ -159,8 +160,8 @@ bool game::gameover(vector<player>& v)
 				cout << "\nGame Over The winner is " << a.getname()
 					<< " with " << a.getschips() << " Chips.\n\n";
 				printLine();
-				cout << "\nFinal Game Scores\n";
-				printStates();
+				//cout << "\nFinal Game Scores\n";
+				//printStates();
 
 				return true;
 			}
@@ -174,7 +175,7 @@ bool game::gameover(vector<player>& v)
 
 void game::printStates()
 {
-	for (auto a : pv)
+	for (auto a : pv) // print info for each player
 	{
 		cout << "\nPlayer " << a.getname() << " Has " << a.getschips() << " Chips\n";
 	}

@@ -1,6 +1,6 @@
 /*
 Ramy Tawfik
-10/15/2018
+10/16/2018
 Ramy.Tawfik@snhu.edu
 */
 
@@ -13,11 +13,13 @@ int main() {
 	game game;
 	read_Rulesfile(); // display the game rule
 	srand(time(NULL));  // "seed" Generate unique random numbers using the current time
-	game.play();
-	cin.get();
+	game.play(); // call the play function
 
+	cin.get();
 	return 0;
 }
+
+
 
 //function to test the Dice class
 /*void test_dice() {
