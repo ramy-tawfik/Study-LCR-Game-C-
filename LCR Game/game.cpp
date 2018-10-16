@@ -10,21 +10,23 @@ game::~game()
 {
 }
 
-
 //function to take the number of the players and there name
 // and add players the players vector
 void game::getPlayerInfo()
 {
-	while (numplayer < 3)
+	while (numplayer < 3 || !cin << numplayer)
 	{
-		cout << "\nPlease enter the number of Players : ";
+		cout << "Please enter the number of Players : ";
 		cin >> numplayer;
+
 		if (numplayer < 3)
 		{
-			cout << "\nMinimum number of Players is Three ";
+			cout << "\nMinimum number of Players is Three\n ";
+			cin.clear();
+			cin.ignore(5, '\n');
 		}
 	}
-
+	printLine();
 	string tempname; //temporarly hold the name
 	for (int i = 0; i < numplayer; i++)
 	{
@@ -93,7 +95,7 @@ void game::moveToRight(player & p)
 	{
 		p.subChip();
 		pv[numplayer - 1].addChip();//give to last player
-		cout << " 1 chip moved from " << p.getname() << " to " << pv[numplayer - 1].getname() << "\n";
+		cout << "1 chip moved from " << p.getname() << " to " << pv[numplayer - 1].getname() << "\n";
 	}
 	else
 	{
@@ -115,7 +117,7 @@ void game::moveToLeft(player & p)
 	{
 		p.subChip();
 		pv[0].addChip();
-		cout << " 1 chip moved from " << p.getname() << " to " << pv[0].getname() << "\n";
+		cout << "1 chip moved from " << p.getname() << " to " << pv[0].getname() << "\n";
 	}
 	else
 	{
@@ -133,7 +135,7 @@ void game::moveToLeft(player & p)
 
 void game::moveToCenter(player & p)
 {
-	cout << " 1 chip moved to the Center from " << p.getname() << "\n";
+	cout << "1 chip moved to the Center from " << p.getname() << "\n";
 	p.subChip();
 	center += 1;
 }
@@ -153,10 +155,11 @@ bool game::gameover(vector<player>& v)
 		for (auto a : v) {
 			if (a.getschips() > 0)
 			{
+				printLine();
 				cout << "\nGame Over The winner is " << a.getname()
 					<< " with " << a.getschips() << " Chips.\n\n";
-
-				cout << "Final Game Scores\n";
+				printLine();
+				cout << "\nFinal Game Scores\n";
 				printStates();
 
 				return true;
@@ -176,4 +179,12 @@ void game::printStates()
 		cout << "\nPlayer " << a.getname() << " Has " << a.getschips() << " Chips\n";
 	}
 	cout << "\nThe Center Bucket Contains " << center << " Chip\\s\n\n";
+}
+
+void game::printLine()
+{
+	for (int i = 0; i < 40; i++)
+	{
+		cout << "*";
+	}
 }

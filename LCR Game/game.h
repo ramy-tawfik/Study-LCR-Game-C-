@@ -16,6 +16,7 @@ private:
 	void moveToCenter(player& p);
 	bool gameover(vector<player>& v);
 	void printStates();
+	void printLine();
 
 public:
 	game();
