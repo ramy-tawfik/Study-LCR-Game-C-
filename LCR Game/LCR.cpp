@@ -1,6 +1,6 @@
 /*
 Ramy Tawfik
-10/16/2018
+10/17/2018
 Ramy.Tawfik@snhu.edu
 */
 
@@ -18,8 +18,6 @@ int main() {
 	cin.get();
 	return 0;
 }
-
-
 
 //function to test the Dice class
 /*void test_dice() {

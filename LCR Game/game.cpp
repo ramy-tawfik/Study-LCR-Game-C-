@@ -45,9 +45,9 @@ void game::play()
 	cout << "\nBeging of the LCR Dice game.\n\n";
 	printStates();
 
-	int dice_face;
+	int dice_face; //temporary holder
+	int tempchips; //temporary holder
 
-	int tempchips;
 	while (!gameover(pv))// while no winner
 	{
 		//for each player
@@ -66,19 +66,19 @@ void game::play()
 				switch (dice_face)
 				{
 				case 1: //left
-					cout << " \n" << pv[i].getname() << " Dice number " << y << " is L\nSCORE :\n";
+					cout << " \n" << pv[i].getname() << " Dice number " << y << " is L\n\nSCORE :\n\n";
 					moveToLeft(pv[i]);
 					break;
 				case 2: //right
-					cout << " \n" << pv[i].getname() << " Dice number " << y << " is R\nSCORE :\n";
+					cout << " \n" << pv[i].getname() << " Dice number " << y << " is R\n\nSCORE :\n\n";
 					moveToRight(pv[i]);
 					break;
 				case 3: // center
-					cout << " \n" << pv[i].getname() << " Dice number " << y << " is C\nSCORE :\n";
+					cout << " \n" << pv[i].getname() << " Dice number " << y << " is C\n\nSCORE :\n\n";
 					moveToCenter(pv[i]);
 					break;
 				default: // Dots
-					cout << " \n" << pv[i].getname() << " Dice number " << y << " is *\nSCORE :\n";
+					cout << " \n" << pv[i].getname() << " Dice number " << y << " is *\n\nSCORE :\n\n";
 					break;
 				}
 				printStates();
@@ -89,6 +89,7 @@ void game::play()
 	cin.get();
 }
 
+// move 1 chip to the player on the right
 void game::moveToRight(player & p)
 {
 	if (pv[0] == p) // First player
@@ -105,12 +106,13 @@ void game::moveToRight(player & p)
 			{
 				pv[i].subChip();
 				pv[i - 1].addChip(); // add chip to the right
-				cout << " 1 chip moved from " << pv[i].getname() << " to " << pv[i - 1].getname() << "\n";
+				cout << "1 chip moved from " << pv[i].getname() << " to " << pv[i - 1].getname() << "\n";
 			}
 		}
 	}
 }
 
+// move 1 chip to the left player
 void game::moveToLeft(player & p)
 {
 	if (pv[numplayer - 1] == p) // last player
@@ -128,12 +130,13 @@ void game::moveToLeft(player & p)
 			{
 				pv[i + 1].addChip();
 				pv[i].subChip();
-				cout << " 1 chip moved from " << pv[i].getname() << " to " << pv[i + 1].getname() << "\n";
+				cout << "1 chip moved from " << pv[i].getname() << " to " << pv[i + 1].getname() << "\n";
 			}
 		}
 	}
 }
 
+// move 1 chip to the center bucket
 void game::moveToCenter(player & p)
 {
 	cout << "1 chip moved to the Center from " << p.getname() << "\n";
@@ -141,6 +144,7 @@ void game::moveToCenter(player & p)
 	center += 1;
 }
 
+//check if ony one player has chips
 bool game::gameover(vector<player>& v)
 {
 	int playerWithChips = 0;
@@ -182,6 +186,7 @@ void game::printStates()
 	cout << "\nThe Center Bucket Contains " << center << " Chip\\s\n\n";
 }
 
+//print line of * for decoration
 void game::printLine()
 {
 	for (int i = 0; i < 40; i++)
